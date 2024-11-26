@@ -8,7 +8,7 @@ class CompanionIntercom:
         name = name.lower()
         return name
 
-    def createListenButton(self, page, pos):
+    def createListenButton(self, page: int, pos: list):
         with open("templates/button_template_listen.json") as t:
             button = json.load(t)
         pos_x = pos[1]
@@ -44,7 +44,7 @@ class CompanionIntercom:
 
         return
 
-    def createVolUpButton(self, page, pos):
+    def createVolUpButton(self, page: int, pos: list):
         with open("templates/button_template_up.json") as f:
             button = json.load(f)
 
@@ -81,7 +81,7 @@ class CompanionIntercom:
 
         return
 
-    def createVolDownButton(self, page, pos):
+    def createVolDownButton(self, page: int, pos: list):
         with open("templates/button_template_down.json") as f:
             button = json.load(f)
 
@@ -118,7 +118,7 @@ class CompanionIntercom:
 
         return
 
-    def createButton(self, name, page, pos, push_parameters, release_parameters, listen_endpoints=None, listen_volume_endpoints=None):
+    def createButton(self, name: str, page: int, pos: list, push_parameters: list, release_parameters: list, listen_endpoints: list=None, listen_volume_endpoints: list=None):
         with open("templates/button_template.json") as f:
             button = json.load(f)
 
