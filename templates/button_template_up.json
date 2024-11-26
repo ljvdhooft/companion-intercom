@@ -1,0 +1,64 @@
+{
+	"type": "button",
+	"style": {
+		"text": "<UP>",
+		"textExpression": false,
+		"size": "14",
+		"png64": null,
+		"alignment": "center:center",
+		"pngalignment": "center:center",
+		"color": 16777215,
+		"bgcolor": 0,
+		"show_topbar": false
+	},
+	"options": {
+		"relativeDelay": false,
+		"rotaryActions": false,
+		"stepAutoProgress": false
+	},
+	"feedbacks": [
+		{
+			"id": "U7PZ8Ea4DOkwpX0n-0MgM",
+			"type": "bank_pushed",
+			"instance_id": "internal",
+			"options": {
+				"location_target": "this",
+				"location_text": "$(this:page)/$(this:row)/$(this:column)",
+				"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+				"latch_compatability": false
+			},
+			"style": {
+				"color": 16777215,
+				"bgcolor": 204
+			},
+			"isInverted": false,
+			"children": []
+		}
+	],
+	"steps": {
+		"0": {
+			"action_sets": {
+				"1000": [],
+				"down": [
+					{
+						"id": "JnwGd6SGcPrTs9n9vSL8U",
+						"action": "button_release",
+						"instance": "internal",
+						"options": {
+							"location_target": "expression",
+							"location_text": "$(this:page)/$(this:row)/$(this:column)",
+							"location_expression": "concat($(this:page), '/', $(this:row) + 1, '/', $(this:column))",
+							"force": false
+						},
+						"delay": 0,
+						"headline": "Release <DOWN>"
+					}
+				],
+				"up": []
+			},
+			"options": {
+				"runWhileHeld": []
+			}
+		}
+	}
+}

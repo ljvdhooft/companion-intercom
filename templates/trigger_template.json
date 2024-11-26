@@ -1,0 +1,23 @@
+{
+	"type": "trigger",
+	"options": {
+		"name": "<LISTEN> BUTTON_NAME",
+		"enabled": true,
+		"sortOrder": 0,
+		"relativeDelay": false
+	},
+	"action_sets": {
+		"0": []
+	},
+	"condition": [],
+	"events": [
+		{
+			"id": "gJl7g-rZCqbSPiD-EgiaK",
+			"type": "variable_changed",
+			"enabled": true,
+			"options": {
+				"variableId": "internal:custom_listen_BUTTON_NAME"
+			}
+		}
+	]
+}

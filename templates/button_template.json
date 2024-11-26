@@ -1,0 +1,440 @@
+{
+	"type": "button",
+	"style": {
+		"text": "",
+		"textExpression": false,
+		"size": "14",
+		"png64": null,
+		"alignment": "center:center",
+		"pngalignment": "center:center",
+		"color": 16777215,
+		"bgcolor": "0",
+		"show_topbar": false
+	},
+	"options": {
+		"relativeDelay": false,
+		"rotaryActions": false,
+		"stepAutoProgress": false
+	},
+	"feedbacks": [
+		{
+			"id": "dyUMiCMdkDyUtukiqzinR",
+			"type": "variable_value",
+			"instance_id": "internal",
+			"options": {
+				"variable": "A custom variable $(internal:custom_listen_BUTTON_NAME)",
+				"op": "eq",
+				"value": "1"
+			},
+			"style": {
+				"bgcolor": 39168
+			},
+			"isInverted": false,
+			"headline": "LISTEN",
+			"children": []
+		},
+		{
+			"id": "u8BBU2y7qcIyeAvW2UKlN",
+			"type": "logic_and",
+			"instance_id": "internal",
+			"options": {},
+			"style": {
+				"bgcolor": 16744448
+			},
+			"isInverted": false,
+			"disabled": false,
+			"headline": "PTT",
+			"children": [
+				{
+					"id": "5IWPAXPm2Bs8l_nmvEN-g",
+					"type": "bank_pushed",
+					"instance_id": "internal",
+					"options": {
+						"location_target": "this",
+						"location_text": "$(this:page)/$(this:row)/$(this:column)",
+						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+						"latch_compatability": false
+					},
+					"style": {
+						"color": 16777215,
+						"bgcolor": 16711680
+					},
+					"isInverted": false,
+					"children": []
+				},
+				{
+					"id": "flFFk00L4Kigg_SVSKK1R",
+					"type": "bank_current_step",
+					"instance_id": "internal",
+					"options": {
+						"location_target": "this",
+						"location_text": "$(this:page)/$(this:row)/$(this:column)",
+						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+						"step": 1
+					},
+					"style": {
+						"color": 0,
+						"bgcolor": 65280
+					},
+					"isInverted": false,
+					"children": []
+				}
+			]
+		},
+		{
+			"id": "_AujsQo6wKYhn0ohYcggy",
+			"type": "bank_current_step",
+			"instance_id": "internal",
+			"options": {
+				"location_target": "this",
+				"location_text": "$(this:page)/$(this:row)/$(this:column)",
+				"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+				"step": 2
+			},
+			"style": {
+				"bgcolor": 16744448
+			},
+			"isInverted": false,
+			"headline": "LATCH",
+			"children": []
+		},
+		{
+			"id": "OLx1iTXERB0Q5osx0nvEH",
+			"type": "logic_and",
+			"instance_id": "internal",
+			"options": {},
+			"style": {
+				"bgcolor": 16711680
+			},
+			"isInverted": false,
+			"headline": "LISTEN & PTT",
+			"children": [
+				{
+					"id": "gP4rvCKe6rgn81zygJqt5",
+					"type": "variable_value",
+					"instance_id": "internal",
+					"options": {
+						"variable": "internal:custom_listen_BUTTON_NAME",
+						"op": "eq",
+						"value": "1"
+					},
+					"style": {
+						"color": 16777215,
+						"bgcolor": 16711680
+					},
+					"isInverted": false,
+					"children": []
+				},
+				{
+					"id": "f9l2YTAX7ytJP669PDBMy",
+					"type": "bank_pushed",
+					"instance_id": "internal",
+					"options": {
+						"location_target": "this",
+						"location_text": "$(this:page)/$(this:row)/$(this:column)",
+						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+						"latch_compatability": false
+					},
+					"style": {
+						"color": 16777215,
+						"bgcolor": 16711680
+					},
+					"isInverted": false,
+					"children": []
+				},
+				{
+					"id": "cE7EqDVrKjocwCviHmsDq",
+					"type": "logic_or",
+					"instance_id": "internal",
+					"options": {},
+					"style": {
+						"color": 16777215,
+						"bgcolor": 16711680
+					},
+					"isInverted": false,
+					"children": [
+						{
+							"id": "SeDY5GBky2Px7-4QEdEyv",
+							"type": "bank_current_step",
+							"instance_id": "internal",
+							"options": {
+								"location_target": "this",
+								"location_text": "$(this:page)/$(this:row)/$(this:column)",
+								"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+								"step": 1
+							},
+							"style": {
+								"color": 0,
+								"bgcolor": 65280
+							},
+							"isInverted": false,
+							"children": []
+						},
+						{
+							"id": "F11lVtDRQxKcFpWrjEPos",
+							"type": "bank_current_step",
+							"instance_id": "internal",
+							"options": {
+								"location_target": "this",
+								"location_text": "$(this:page)/$(this:row)/$(this:column)",
+								"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+								"step": 2
+							},
+							"style": {
+								"color": 0,
+								"bgcolor": 65280
+							},
+							"isInverted": false,
+							"children": []
+						}
+					]
+				}
+			]
+		},
+		{
+			"id": "E47afXf97jS-j0wDNpqfn",
+			"type": "logic_and",
+			"instance_id": "internal",
+			"options": {},
+			"style": {
+				"bgcolor": 16711680
+			},
+			"isInverted": false,
+			"headline": "LISTEN & LATCH",
+			"children": [
+				{
+					"id": "2LBdBFZGsFmKql7uZowZy",
+					"type": "variable_value",
+					"instance_id": "internal",
+					"options": {
+						"variable": "internal:custom_listen_BUTTON_NAME",
+						"op": "eq",
+						"value": "1"
+					},
+					"style": {
+						"color": 16777215,
+						"bgcolor": 16711680
+					},
+					"isInverted": false,
+					"children": []
+				},
+				{
+					"id": "giQC0iog3h3WM0Ywlo5P8",
+					"type": "bank_current_step",
+					"instance_id": "internal",
+					"options": {
+						"location_target": "this",
+						"location_text": "$(this:page)/$(this:row)/$(this:column)",
+						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+						"step": 2
+					},
+					"style": {
+						"color": 0,
+						"bgcolor": 65280
+					},
+					"isInverted": false,
+					"children": []
+				}
+			]
+		},
+		{
+			"id": "hRGxBNgp8sJpCPvul374l",
+			"type": "logic_and",
+			"instance_id": "internal",
+			"options": {},
+			"style": {
+				"text": "($(internal:custom_listen_died_vol) == -20) ? \"(min)\" : ($(internal:custom_listen_died_vol) == 0) ? \"(max)\" : $(internal:custom_listen_died_vol)",
+				"textExpression": true
+			},
+			"isInverted": false,
+			"headline": "LISTEN_VOL display",
+			"children": [
+				{
+					"id": "dvfsOq7g3_NZcI_zAbEUe",
+					"type": "bank_pushed",
+					"instance_id": "internal",
+					"options": {
+						"location_target": "this",
+						"location_text": "$(this:page)/$(this:row)/$(this:column)",
+						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+						"latch_compatability": false
+					},
+					"style": {
+						"color": 16777215,
+						"bgcolor": 16711680
+					},
+					"isInverted": false,
+					"children": []
+				},
+				{
+					"id": "qqg6HXK_HXqfOFwUfZc2I",
+					"type": "logic_or",
+					"instance_id": "internal",
+					"options": {},
+					"style": {
+						"color": 16777215,
+						"bgcolor": 16711680
+					},
+					"isInverted": false,
+					"headline": "vol_up or vol_down",
+					"children": [
+						{
+							"id": "MVq4QVvgtllr-grGtWJ0N",
+							"type": "bank_current_step",
+							"instance_id": "internal",
+							"options": {
+								"location_target": "this",
+								"location_text": "$(this:page)/$(this:row)/$(this:column)",
+								"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+								"step": 4
+							},
+							"style": {
+								"color": 0,
+								"bgcolor": 65280
+							},
+							"isInverted": false,
+							"headline": "vol_up",
+							"children": []
+						},
+						{
+							"id": "SF1rzkcuqS2nIMc9P9jtk",
+							"type": "bank_current_step",
+							"instance_id": "internal",
+							"options": {
+								"location_target": "this",
+								"location_text": "$(this:page)/$(this:row)/$(this:column)",
+								"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+								"step": 5
+							},
+							"style": {
+								"color": 0,
+								"bgcolor": 65280
+							},
+							"isInverted": false,
+							"headline": "vol_down",
+							"children": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"steps": {
+		"0": {
+			"action_sets": {
+				"down": [
+					{
+						"id": "MU13YJ3A8PS_6Nch0VLRl",
+						"action": "bank_current_step",
+						"instance": "internal",
+						"options": {
+							"location_target": "this",
+							"location_text": "$(this:page)/$(this:row)/$(this:column)",
+							"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+							"step_from_expression": false,
+							"step": 2,
+							"step_expression": "1"
+						},
+						"delay": 0,
+						"disabled": true,
+						"headline": "LATCH"
+					}
+				],
+				"up": []
+			},
+			"options": {
+				"runWhileHeld": [],
+				"name": "base"
+			}
+		},
+		"1": {
+			"action_sets": {
+				"down": [
+					{
+						"id": "WohZFgFBS8QXuu56C_5xr",
+						"action": "bank_current_step",
+						"instance": "internal",
+						"options": {
+							"location_target": "this",
+							"location_text": "$(this:page)/$(this:row)/$(this:column)",
+							"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+							"step_from_expression": false,
+							"step": 1,
+							"step_expression": "1"
+						},
+						"delay": 0,
+						"headline": "LATCH"
+					}
+				],
+				"up": []
+			},
+			"options": {
+				"runWhileHeld": [],
+				"name": "latch"
+			}
+		},
+		"2": {
+			"action_sets": {
+				"down": [
+					{
+						"id": "t4oZWTdtIzJ7sFSR81CBA",
+						"action": "custom_variable_set_expression",
+						"instance": "internal",
+						"options": {
+							"name": "listen_BUTTON_NAME",
+							"expression": "$(internal:custom_listen_BUTTON_NAME) * -1"
+						},
+						"delay": 0
+					}
+				],
+				"up": []
+			},
+			"options": {
+				"runWhileHeld": [],
+				"name": "listen_on"
+			}
+		},
+		"3": {
+			"action_sets": {
+				"down": [
+					{
+						"id": "KQvaKEZbSecRpYpR0Q-sm",
+						"action": "custom_variable_set_expression",
+						"instance": "internal",
+						"options": {
+							"name": "listen_BUTTON_NAME_vol",
+							"expression": "($(internal:custom_listen_BUTTON_NAME_vol) < 0) ? $(internal:custom_listen_BUTTON_NAME_vol) + 2 : $(internal:custom_listen_BUTTON_NAME_vol)"
+						},
+						"delay": 0
+					}
+				],
+				"up": []
+			},
+			"options": {
+				"runWhileHeld": [],
+				"name": "vol_up"
+			}
+		},
+		"4": {
+			"action_sets": {
+				"down": [
+					{
+						"id": "dCunCenJOpkhrYBey5Qt2",
+						"action": "custom_variable_set_expression",
+						"instance": "internal",
+						"options": {
+							"name": "listen_BUTTON_NAME_vol",
+							"expression": "($(internal:custom_listen_died_vol) > -20) ? $(internal:custom_listen_died_vol) - 2 : $(internal:custom_listen_died_vol)"
+						},
+						"delay": 0
+					}
+				],
+				"up": []
+			},
+			"options": {
+				"runWhileHeld": [],
+				"name": "vol_down"
+			}
+		}
+	}
+}

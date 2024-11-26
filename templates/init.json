@@ -1,0 +1,13 @@
+{
+	"version": 4,
+	"type": "full",
+	"pages": {},
+	"custom_variables": {},
+	"instances": {
+		"fk56I_UonwbLu1nOuArCJ": {
+			"instance_type": "generic-osc",
+			"label": "wing",
+			"lastUpgradeIndex": 0
+		}
+	}
+}
