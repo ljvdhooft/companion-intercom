@@ -9,4 +9,6 @@ c.createListenButton(1, [0, 0])
 c.createVolUpButton(1, [1, 0])
 c.createVolDownButton(1, [2, 0])
 
+c.createInstance("127.0.0.1", 2223)
+
 print(c.toJSON())

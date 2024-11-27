@@ -290,6 +290,10 @@ class CompanionIntercom:
 
         return
 
+    def createInstance(self, host: str, port: int):
+        self.config["instances"]["fk56I_UonwbLu1nOuArCJ"]["config"]["host"] = host
+        self.config["instances"]["fk56I_UonwbLu1nOuArCJ"]["config"]["port"] = port
+
     def __init__(self):
         self.button_positions = []
         with open("templates/init.json") as f:

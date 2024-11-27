@@ -6,8 +6,16 @@
 	"instances": {
 		"fk56I_UonwbLu1nOuArCJ": {
 			"instance_type": "generic-osc",
+			"sortOrder": 1,
 			"label": "wing",
-			"lastUpgradeIndex": 0
+			"isFirstInit": false,
+			"config": {
+				"protocol": "udp",
+				"host": "",
+				"port": ""
+			},
+			"lastUpgradeIndex": 0,
+			"enabled": true
 		}
 	}
 }
