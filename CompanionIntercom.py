@@ -118,7 +118,7 @@ class CompanionIntercom:
 
         return
 
-    def createButton(self, name: str, page: int, pos: list, push_parameters: list, release_parameters: list, listen_endpoints: list=None, listen_volume_endpoints: list=None):
+    def createButton(self, name: str, page: int, pos: list, latch: bool, push_parameters: list, release_parameters: list, listen_endpoints: list=None, listen_volume_endpoints: list=None):
         with open("templates/button_template.json") as f:
             button = json.load(f)
 
@@ -168,6 +168,9 @@ class CompanionIntercom:
         button["steps"]["4"]["action_sets"]["down"][0]["options"][
             "expression"
         ] = f"($(internal:custom_listen_{func_name}_vol) > -20) ? $(internal:custom_listen_{func_name}_vol) - 2 : $(internal:custom_listen_{func_name}_vol)"
+
+        if latch:
+            button["steps"]["0"]["action_sets"]["down"][0]["disabled"] = False
 
         for i, f in enumerate(push_parameters):
             par = f.split(" ")
