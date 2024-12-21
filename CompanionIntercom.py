@@ -21,11 +21,11 @@ class CompanionIntercom:
                 "instance": "internal",
                 "options": {
                     "location_target": "text",
-                    "location_text": f"$(this:page)/{b[0]}/{b[1]}",
+                    "location_text": f'$(this:page)/{b["pos"][0]}/{b["pos"][1]}',
                     "location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-                    "step_from_expression": False,
+                    "step_from_expression": True,
                     "step": 1,
-                    "step_expression": "1",
+                    "step_expression": f'$(internal:custom_talk_{b["name"]}) + 1',
                 },
                 "delay": 0,
             }
@@ -33,6 +33,9 @@ class CompanionIntercom:
             button["steps"]["0"]["action_sets"]["1000"].append(f)
             button["steps"]["0"]["action_sets"]["down"].append(copy.deepcopy(f))
             button["steps"]["0"]["action_sets"]["down"][i]["options"]["step"] = 3
+            button["steps"]["0"]["action_sets"]["down"][i]["options"][
+                "step_from_expression"
+            ] = False
 
         if page not in self.config["pages"]:
             self.config["pages"][page] = {}
@@ -58,7 +61,7 @@ class CompanionIntercom:
                 "instance": "internal",
                 "options": {
                     "location_target": "text",
-                    "location_text": f"$(this:page)/{b[0]}/{b[1]}",
+                    "location_text": f'$(this:page)/{b["pos"][0]}/{b["pos"][1]}',
                     "location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
                     "step_from_expression": False,
                     "step": 1,
@@ -66,10 +69,24 @@ class CompanionIntercom:
                 },
                 "delay": 0,
             }
+            fDown = {
+                "id": "LriXVyti4LQxCBgMeKuuE",
+                "action": "bank_current_step",
+                "instance": "internal",
+                "options": {
+                    "location_target": "text",
+                    "location_text": f'$(this:page)/{b["pos"][0]}/{b["pos"][1]}',
+                    "location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+                    "step_from_expression": False,
+                    "step": 4,
+                    "step_expression": "1",
+                },
+                "delay": 0,
+            }
+
             button["steps"]["0"]["action_sets"]["up"].append(f)
             button["steps"]["0"]["action_sets"]["1000"].append(f)
-            button["steps"]["0"]["action_sets"]["down"].append(copy.deepcopy(f))
-            button["steps"]["0"]["action_sets"]["down"][i]["options"]["step"] = 4
+            button["steps"]["0"]["action_sets"]["down"].append(fDown)
 
         if page not in self.config["pages"]:
             self.config["pages"][page] = {}
@@ -95,7 +112,7 @@ class CompanionIntercom:
                 "instance": "internal",
                 "options": {
                     "location_target": "text",
-                    "location_text": f"$(this:page)/{b[0]}/{b[1]}",
+                    "location_text": f'$(this:page)/{b["pos"][0]}/{b["pos"][1]}',
                     "location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
                     "step_from_expression": False,
                     "step": 1,
@@ -103,10 +120,23 @@ class CompanionIntercom:
                 },
                 "delay": 0,
             }
+            fDown = {
+                "id": "LriXVyti4LQxCBgMeKuuE",
+                "action": "bank_current_step",
+                "instance": "internal",
+                "options": {
+                    "location_target": "text",
+                    "location_text": f'$(this:page)/{b["pos"][0]}/{b["pos"][1]}',
+                    "location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
+                    "step_from_expression": False,
+                    "step": 5,
+                    "step_expression": "1",
+                },
+                "delay": 0,
+            }
             button["steps"]["0"]["action_sets"]["up"].append(f)
             button["steps"]["0"]["action_sets"]["1000"].append(f)
-            button["steps"]["0"]["action_sets"]["down"].append(copy.deepcopy(f))
-            button["steps"]["0"]["action_sets"]["down"][i]["options"]["step"] = 5
+            button["steps"]["0"]["action_sets"]["down"].append(fDown)
 
         if page not in self.config["pages"]:
             self.config["pages"][page] = {}
@@ -133,25 +163,37 @@ class CompanionIntercom:
         button["feedbacks"][0]["options"][
             "variable"
         ] = f"internal:custom_listen_{func_name}"
-        # Feedback "LISTEN & PTT"
-        button["feedbacks"][3]["children"][0]["options"][
+        # Feedback "TALK"
+        button["feedbacks"][1]["options"]["variable"] = f"internal:custom_talk_{func_name}"
+        # Feedback "LISTEN &TALK"
+        button["feedbacks"][2]["children"][0]["options"][
             "variable"
         ] = f"internal:custom_listen_{func_name}"
-        # Feedback "LISTEN & LATCH"
-        button["feedbacks"][4]["children"][0]["options"][
+        button["feedbacks"][2]["children"][1]["options"][
             "variable"
-        ] = f"internal:custom_listen_{func_name}"
+        ] = f"internal:custom_talk_{func_name}"
         # Feedback "LISTEN_VOL display"
-        button["feedbacks"][5]["style"][
+        button["feedbacks"][3]["style"][
             "text"
         ] = f'($(internal:custom_listen_{func_name}_vol) == -20) ? "(min)" : ($(internal:custom_listen_{func_name}_vol) == 0) ? "(max)" : $(internal:custom_listen_{func_name}_vol)'
 
+        # Step "base"
+        button["steps"]["0"]["action_sets"]["down"][1]["options"]["name"] = f"talk_{func_name}"
+        button["steps"]["0"]["action_sets"]["up"][0]["options"][
+            "name"
+        ] = f"talk_{func_name}"
+        # Step "latch"
+        button["steps"]["1"]["action_sets"]["down"][1]["options"][
+            "name"
+        ] = f"talk_{func_name}"
+
+        # Step "listen_on"
         button["steps"]["2"]["action_sets"]["down"][0]["options"][
             "name"
         ] = f"listen_{func_name}"
         button["steps"]["2"]["action_sets"]["down"][0]["options"][
             "expression"
-        ] = f"$(internal:custom_listen_{func_name}) * -1"
+        ] = f"$(internal:custom_listen_{func_name}) == 0 ? 1 : 0"
 
         # Step "vol_up"
         button["steps"]["3"]["action_sets"]["down"][0]["options"][
@@ -171,6 +213,7 @@ class CompanionIntercom:
 
         if latch:
             button["steps"]["0"]["action_sets"]["down"][0]["disabled"] = False
+            button["steps"]["0"]["action_sets"]["up"][0]["disabled"] = True
 
         for i, f in enumerate(push_parameters):
             par = f.split(" ")
@@ -194,7 +237,7 @@ class CompanionIntercom:
                     "instance": "fk56I_UonwbLu1nOuArCJ",
                     "options": {"path": f"{par[0]}", "int": par[1]},
                     "delay": 0,
-                    "disabled": False,
+                    "disabled": latch,
                 }
             )
             button["steps"]["1"]["action_sets"]["down"].append(
@@ -209,7 +252,7 @@ class CompanionIntercom:
             )
 
         if listen_endpoints:
-            self.button_positions.append(pos)
+            self.button_positions.append({"pos": pos, "name": func_name})
             if not listen_volume_endpoints:
                 raise Exception(
                     "listen_volume_endpoints must be set when listen_endpoints is."
@@ -217,7 +260,6 @@ class CompanionIntercom:
 
             with open("templates/trigger_template.json") as f:
                 trigger = json.load(f)
-            self.config["triggers"] = {}
             key = f"Jf6n9QR9zfE9CzxwgKf_{func_name}"
             trigger["options"]["name"] = f"<LISTEN> {name}"
             trigger["events"][0]["options"][
@@ -228,25 +270,25 @@ class CompanionIntercom:
                     {
                         "id": f"dx3H5Xl56SX_C9CjEfUIc_{i}",
                         "action": "send_int",
-                        "instance": "-uJM8ZoIPurpLZ1M--krT",
+                        "instance": "fk56I_UonwbLu1nOuArCJ",
                         "options": {
                             "path": e,
-                            "int": f"$(internal:custom_listen_{func_name}) == 1 ? 1 : 0",
+                            "int": f"$(internal:custom_listen_{func_name})",
                         },
                         "delay": 0,
                     }
                 )
-            self.config["triggers"][key] = copy.deepcopy(trigger)
+            self.config["triggers"][key] = trigger
 
             for i, e in enumerate(listen_volume_endpoints):
                 button["steps"]["3"]["action_sets"]["down"].append(
                     {
                         "id": "1WHyJToPiTgmXRKqgyySB",
-                        "action": "send_int",
+                        "action": "send_float",
                         "instance": "fk56I_UonwbLu1nOuArCJ",
                         "options": {
                             "path": e,
-                            "int": f"$(internal:custom_listen_{func_name}_vol)",
+                            "float": f"$(internal:custom_listen_{func_name}_vol)",
                         },
                         "delay": 0,
                     }
@@ -254,11 +296,11 @@ class CompanionIntercom:
                 button["steps"]["4"]["action_sets"]["down"].append(
                     {
                         "id": "1WHyJToPiTgmXRKqgyySB",
-                        "action": "send_int",
+                        "action": "send_float",
                         "instance": "fk56I_UonwbLu1nOuArCJ",
                         "options": {
                             "path": e,
-                            "int": f"$(internal:custom_listen_{func_name}_vol)",
+                            "float": f"$(internal:custom_listen_{func_name}_vol)",
                         },
                         "delay": 0,
                     }
@@ -280,7 +322,7 @@ class CompanionIntercom:
         func_name = self.sterilize_name(name)
         self.config["custom_variables"][f"listen_{func_name}"] = {
             "description": "A custom variable",
-            "defaultValue": "-1",
+            "defaultValue": "0",
             "persistCurrentValue": False,
             "sortOrder": 4,
         }
@@ -289,6 +331,12 @@ class CompanionIntercom:
             "defaultValue": "-6",
             "persistCurrentValue": False,
             "sortOrder": 5,
+        }
+        self.config["custom_variables"][f"talk_{func_name}"] = {
+            "description": "A custom variable",
+            "defaultValue": "0",
+            "persistCurrentValue": False,
+            "sortOrder": 6,
         }
 
         return
