@@ -17,5 +17,6 @@
 			"lastUpgradeIndex": 0,
 			"enabled": true
 		}
-	}
+	},
+	"triggers": {}
 }

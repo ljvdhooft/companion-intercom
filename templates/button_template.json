@@ -34,68 +34,19 @@
 			"children": []
 		},
 		{
-			"id": "u8BBU2y7qcIyeAvW2UKlN",
-			"type": "logic_and",
-			"instance_id": "internal",
-			"options": {},
-			"style": {
-				"bgcolor": 16744448
-			},
-			"isInverted": false,
-			"disabled": false,
-			"headline": "PTT",
-			"children": [
-				{
-					"id": "5IWPAXPm2Bs8l_nmvEN-g",
-					"type": "bank_pushed",
-					"instance_id": "internal",
-					"options": {
-						"location_target": "this",
-						"location_text": "$(this:page)/$(this:row)/$(this:column)",
-						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-						"latch_compatability": false
-					},
-					"style": {
-						"color": 16777215,
-						"bgcolor": 16711680
-					},
-					"isInverted": false,
-					"children": []
-				},
-				{
-					"id": "flFFk00L4Kigg_SVSKK1R",
-					"type": "bank_current_step",
-					"instance_id": "internal",
-					"options": {
-						"location_target": "this",
-						"location_text": "$(this:page)/$(this:row)/$(this:column)",
-						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-						"step": 1
-					},
-					"style": {
-						"color": 0,
-						"bgcolor": 65280
-					},
-					"isInverted": false,
-					"children": []
-				}
-			]
-		},
-		{
-			"id": "_AujsQo6wKYhn0ohYcggy",
-			"type": "bank_current_step",
+			"id": "dyUMiCMdkDyUtukiqzinR",
+			"type": "variable_value",
 			"instance_id": "internal",
 			"options": {
-				"location_target": "this",
-				"location_text": "$(this:page)/$(this:row)/$(this:column)",
-				"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-				"step": 2
+				"variable": "A custom variable $(internal:custom_talk_BUTTON_NAME)",
+				"op": "eq",
+				"value": "1"
 			},
 			"style": {
 				"bgcolor": 16744448
 			},
 			"isInverted": false,
-			"headline": "LATCH",
+			"headline": "TALK",
 			"children": []
 		},
 		{
@@ -107,7 +58,7 @@
 				"bgcolor": 16711680
 			},
 			"isInverted": false,
-			"headline": "LISTEN & PTT",
+			"headline": "LISTEN & TALK",
 			"children": [
 				{
 					"id": "gP4rvCKe6rgn81zygJqt5",
@@ -126,113 +77,19 @@
 					"children": []
 				},
 				{
-					"id": "f9l2YTAX7ytJP669PDBMy",
-					"type": "bank_pushed",
-					"instance_id": "internal",
-					"options": {
-						"location_target": "this",
-						"location_text": "$(this:page)/$(this:row)/$(this:column)",
-						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-						"latch_compatability": false
-					},
-					"style": {
-						"color": 16777215,
-						"bgcolor": 16711680
-					},
-					"isInverted": false,
-					"children": []
-				},
-				{
-					"id": "cE7EqDVrKjocwCviHmsDq",
-					"type": "logic_or",
-					"instance_id": "internal",
-					"options": {},
-					"style": {
-						"color": 16777215,
-						"bgcolor": 16711680
-					},
-					"isInverted": false,
-					"children": [
-						{
-							"id": "SeDY5GBky2Px7-4QEdEyv",
-							"type": "bank_current_step",
-							"instance_id": "internal",
-							"options": {
-								"location_target": "this",
-								"location_text": "$(this:page)/$(this:row)/$(this:column)",
-								"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-								"step": 1
-							},
-							"style": {
-								"color": 0,
-								"bgcolor": 65280
-							},
-							"isInverted": false,
-							"children": []
-						},
-						{
-							"id": "F11lVtDRQxKcFpWrjEPos",
-							"type": "bank_current_step",
-							"instance_id": "internal",
-							"options": {
-								"location_target": "this",
-								"location_text": "$(this:page)/$(this:row)/$(this:column)",
-								"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-								"step": 2
-							},
-							"style": {
-								"color": 0,
-								"bgcolor": 65280
-							},
-							"isInverted": false,
-							"children": []
-						}
-					]
-				}
-			]
-		},
-		{
-			"id": "E47afXf97jS-j0wDNpqfn",
-			"type": "logic_and",
-			"instance_id": "internal",
-			"options": {},
-			"style": {
-				"bgcolor": 16711680
-			},
-			"isInverted": false,
-			"headline": "LISTEN & LATCH",
-			"children": [
-				{
-					"id": "2LBdBFZGsFmKql7uZowZy",
+					"id": "dyUMiCMdkDyUtukiqzinR",
 					"type": "variable_value",
 					"instance_id": "internal",
 					"options": {
-						"variable": "internal:custom_listen_BUTTON_NAME",
+						"variable": "A custom variable $(internal:custom_talk_BUTTON_NAME)",
 						"op": "eq",
 						"value": "1"
 					},
 					"style": {
-						"color": 16777215,
-						"bgcolor": 16711680
+						"bgcolor": 16744448
 					},
 					"isInverted": false,
-					"children": []
-				},
-				{
-					"id": "giQC0iog3h3WM0Ywlo5P8",
-					"type": "bank_current_step",
-					"instance_id": "internal",
-					"options": {
-						"location_target": "this",
-						"location_text": "$(this:page)/$(this:row)/$(this:column)",
-						"location_expression": "concat($(this:page), '/', $(this:row), '/', $(this:column))",
-						"step": 2
-					},
-					"style": {
-						"color": 0,
-						"bgcolor": 65280
-					},
-					"isInverted": false,
+					"headline": "TALK",
 					"children": []
 				}
 			]
@@ -244,7 +101,8 @@
 			"options": {},
 			"style": {
 				"text": "($(internal:custom_listen_died_vol) == -20) ? \"(min)\" : ($(internal:custom_listen_died_vol) == 0) ? \"(max)\" : $(internal:custom_listen_died_vol)",
-				"textExpression": true
+				"textExpression": true,
+				"size": "24"
 			},
 			"isInverted": false,
 			"headline": "LISTEN_VOL display",
@@ -338,9 +196,33 @@
 						"delay": 0,
 						"disabled": true,
 						"headline": "LATCH"
+					},
+					{
+						"id": "t4oZWTdtIzJ7sFSR81CB_talk",
+						"action": "custom_variable_set_value",
+						"instance": "internal",
+						"options": {
+							"name": "talk_BUTTON_NAME",
+							"value": "1"
+						},
+						"delay": 0,
+						"headline": "TALK var"
 					}
 				],
-				"up": []
+				"up": [
+					{
+						"id": "t4oZWTdtIzJ7sFSR81CB_talk",
+						"action": "custom_variable_set_value",
+						"instance": "internal",
+						"options": {
+							"name": "talk_BUTTON_NAME",
+							"value": "0"
+						},
+						"delay": 0,
+						"disabled": false,
+						"headline": "TALK var"
+					}
+				]
 			},
 			"options": {
 				"runWhileHeld": [],
@@ -364,6 +246,17 @@
 						},
 						"delay": 0,
 						"headline": "LATCH"
+					},
+					{
+						"id": "t4oZWTdtIzJ7sFSR81CB_talk",
+						"action": "custom_variable_set_value",
+						"instance": "internal",
+						"options": {
+							"name": "talk_BUTTON_NAME",
+							"value": "0"
+						},
+						"delay": 0,
+						"headline": "TALK var"
 					}
 				],
 				"up": []
